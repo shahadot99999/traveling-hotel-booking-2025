@@ -1,4 +1,5 @@
 // import logo from "../assets/logo.png";
+import { Link } from 'react-router-dom';
 import img from '../assets/logo.png';
 
 
@@ -26,15 +27,19 @@ const Navbar = () => {
             
             {/* Navigation Links */}
             <div className="flex space-x-6">
-                <a href="#" className="text-gray-700 hover:text-blue-600">News</a>
+                 <Link to="/">Home</Link>
+                 <Link to="/destination">Destination</Link>
+                 <Link to="/contact">Contact</Link>
+                 <Link to="/blog">Blog</Link>
+                {/* <a href="#" className="text-gray-700 hover:text-blue-600">News</a>
                 <a href="#" className="text-gray-700 hover:text-blue-600">Destination</a>
                 <a href="#" className="text-gray-700 hover:text-blue-600">Blog</a>
-                <a href="#" className="text-gray-700 hover:text-blue-600">Contact</a>
+                <a href="#" className="text-gray-700 hover:text-blue-600">Contact</a> */}
             </div>
             
             {/* Login Button */}
             <div className="ml-6">
-                <button className="bg-blue-600 text-white py-2 px-6 rounded-full hover:bg-blue-700 transition duration-300">
+                <button className=" bg-[#F9A51A] text-white py-2 px-6 rounded-none">
                     Login
                 </button>
             </div>
