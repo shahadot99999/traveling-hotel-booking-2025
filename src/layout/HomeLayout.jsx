@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 
 import Mainsections from "../components/Mainsections";
+import TravelFooter from "../components/TravelFooter";
 
 
 const HomeLayout = () => {
@@ -16,7 +17,9 @@ const HomeLayout = () => {
 
 
 
-        <footer></footer>
+        <footer>
+          <TravelFooter></TravelFooter>
+        </footer>
       </div>
     );
 };
