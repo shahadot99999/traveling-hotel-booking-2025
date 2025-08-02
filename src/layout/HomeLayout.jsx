@@ -17,7 +17,7 @@ const HomeLayout = () => {
             <img src={img} alt="" className="w-full h-full object-cover opacity-30" />
           </div>
           
-          <nav className="w-11/12 mx-auto py-2 relative z-20">
+          <nav className="w-11/12  mx-auto bg-none py-2 relative z-20">
             <Navbar></Navbar>
           </nav>
 

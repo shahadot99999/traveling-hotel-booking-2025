@@ -32,10 +32,7 @@ const Navbar = () => {
                  <Link to="/destination">Destination</Link>
                  <Link to="/contact">Contact</Link>
                  <Link to="/blog">Blog</Link>
-                {/* <a href="#" className="text-gray-700 hover:text-blue-600">News</a>
-                <a href="#" className="text-gray-700 hover:text-blue-600">Destination</a>
-                <a href="#" className="text-gray-700 hover:text-blue-600">Blog</a>
-                <a href="#" className="text-gray-700 hover:text-blue-600">Contact</a> */}
+               
             </div>
             
             {/* Login Button */}
