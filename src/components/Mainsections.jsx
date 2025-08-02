@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import img1 from "../assets/Sajek.png";
 import img2 from "../assets/Sreemongol.png";
 import img3 from "../assets/sundorbon.png";
@@ -12,8 +13,12 @@ const Mainsections = () => {
                     Cox's Bazar is a city, fishing port, tourism centre and district headquarters in southeastern Bangladesh.
                     It is famous mostly for its long natural sandy beach...
                 </p>
-                <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-2 rounded transition">
-                    Booking →
+
+                
+                <button >
+                    <NavLink to={'/booking'} className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-2 rounded transition" >
+                        Booking →
+                    </NavLink>
                 </button>
             </div>
 
