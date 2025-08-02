@@ -5,14 +5,15 @@ import img from '../assets/logo.png';
 
 const Navbar = () => {
     return (
-         <div className="flex justify-between items-center p-4 bg-white shadow-sm">
+         <div className="flex justify-between items-center p-4  shadow-sm">
             {/* Logo */}
             
-                <div className="flex items-center">
+                <div className="flex items-center ">
                 <img 
                     src={img} 
                     alt="Travel Guru Logo" 
-                    className="h-10" // Adjust height as needed
+                    
+                    className="h-10 bg-white" // Adjust height as needed
                 />
             </div>
             
@@ -26,7 +27,7 @@ const Navbar = () => {
             </div>
             
             {/* Navigation Links */}
-            <div className="flex space-x-6">
+            <div className="flex space-x-6 text-white">
                  <Link to="/">Home</Link>
                  <Link to="/destination">Destination</Link>
                  <Link to="/contact">Contact</Link>
