@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const BookingPages = () => {
     // State for form inputs
@@ -77,9 +78,12 @@ const BookingPages = () => {
                             />
                         </div>
                     </div>
+
+                    {/* <Link to="/booking/hotelbooking">Hotel Booking</Link> */}
                     
-                    <button className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">
-                        Start Booking
+                    <button >
+                        <Link to="/hotelbooking" className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Start Booking </Link>
+                        
                     </button>
                 </div>
             </div>

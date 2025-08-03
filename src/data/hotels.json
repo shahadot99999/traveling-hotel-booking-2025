@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Light bright airy stylish apt & safe peaceful stay",
+    "location": "Cox's Bazar",
+    "guests": 4,
+    "bedrooms": 2,
+    "beds": 2,
+    "baths": 2,
+    "amenities": ["WiFi", "Air conditioning", "Kitchen"],
+    "cancellation": "Cancellation flexibility available",
+    "price": 34,
+    "originalPrice": 47,
+    "discount": 20,
+    "image": "image-url-1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Apriment in Lost Panorama",
+    "location": "Cox's Bazar",
+    "guests": 4,
+    "bedrooms": 2,
+    "beds": 2,
+    "baths": 2,
+    "amenities": ["WiFi", "Air conditioning", "Kitchen"],
+    "cancellation": "Cancellation flexibility available",
+    "price": 44,
+    "originalPrice": 27,
+    "discount": 10,
+    "image": "image-url-2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "AR Lounge & Pool (x² + b&b)",
+    "location": "Cox's Bazar",
+    "guests": 4,
+    "bedrooms": 2,
+    "beds": 2,
+    "baths": 2,
+    "amenities": ["WiFi", "Air conditioning", "Kitchen"],
+    "cancellation": "Cancellation flexibility available",
+    "price": 44,
+    "originalPrice": 42,
+    "discount": 25,
+    "image": "image-url-3.jpg"
+  }
+]
