@@ -5,7 +5,7 @@ const Login = () => {
     return (
         <div className="min-h-screen flex 
         justify-center items-center">
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 rounded-none p-10 ">
+            <div className="card bg-base-100 w-full max-w-sm shrink-0 rounded-none p-10 border border-gray-300 ">
 
                 <h2 className="text-2xl font-semibold ml-6">Login</h2>
                 <form className="card-body">

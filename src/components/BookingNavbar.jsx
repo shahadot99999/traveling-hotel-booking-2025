@@ -28,9 +28,11 @@ const BookingNavbar = () => {
             
             {/* Login Button */}
             <div className="ml-6">
-                <button className=" bg-[#F9A51A] text-white py-2 px-6 rounded-none">
-                    Login
+                <button >
+                      <Link  to="/auth/login"  className=" bg-[#F9A51A] text-white py-2 px-6 rounded-none"> Login</Link>
                 </button>
+
+              
             </div>
         </div>
     );
