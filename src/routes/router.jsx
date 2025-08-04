@@ -2,6 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../layout/HomeLayout";
 import BookingLayout from "../layout/BookingLayout";
 import HotelBookingLayout from "../layout/HotelBookingLayout";
+import AuthLayout from "../layout/AuthLayout";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 
 
@@ -13,13 +16,7 @@ const router = createBrowserRouter([
     {
         path: "/booking",
         element: <BookingLayout></BookingLayout>,
-        // children: [
-        //     {
-        //         path: "hotelbooking", 
-        //         element: <HotelBookingLayout></HotelBookingLayout>,
-        //     },
-        //     // You can add more child routes here if needed
-        // ]
+        
     },
     {
 
@@ -27,8 +24,19 @@ const router = createBrowserRouter([
         element:<HotelBookingLayout></HotelBookingLayout>
     },
     {
-        path: "auth",
-        element: <h1>Login Layout</h1>,
+        path: "/auth",
+        element: <AuthLayout></AuthLayout>,
+        children: [
+            {
+                path: "/auth/login",
+                element: <Login></Login>
+            },
+            {
+                path: "/auth/register",
+                element: <Register></Register>,
+            },
+            
+        ],
     },
     {
         path: "*",
