@@ -6,7 +6,7 @@ import { AuthContext } from '../provider/AuthProvider';
 
 
 const Navbar = () => {
-    const {user}=useContext(AuthContext);
+    const {user, logout}=useContext(AuthContext);
     return (
          <div className="flex justify-between items-center p-4  shadow-sm">
             {/* Logo */}
@@ -35,16 +35,26 @@ const Navbar = () => {
                  <Link to="/destination">Destination</Link>
                  <Link to="/contact">Contact</Link>
                  <Link to="/blog">Blog</Link>
-                 <Link>{user && user.name}</Link>
+                 {/* <Link>{user && user?.email}</Link> */}
+                 <Link>{user && user.displayName}</Link>
                
             </div>
             
             {/* Login Button */}
             <div className="ml-6">
-                <button className=" bg-[#F9A51A] text-white py-2 px-6 rounded-none">
+                {
+                    user && user?.email? (
+                        <button onClick={logout} className='btn btn-neutral rounded none'>Log out</button>
+                    ): (
+
+                        <button className=" bg-[#F9A51A] text-white py-2 px-6 rounded-none">
                    <Link to="/auth/login">Login </Link>
                    
-                </button>
+                       </button>
+
+                    )
+                }
+                
             </div>
         </div>
     );

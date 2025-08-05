@@ -1,35 +1,68 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
 
     const { createNewUser, setUser } = useContext(AuthContext);
 
+    // const handlesubmit = (e) => {
+    //     e.preventDefault();
+
+    //     //get form data
+    //     const form = new FormData(e.target);
+    //     const firstname = form.get("firstname");
+    //     const lasttname = form.get("lastname");
+    //     const email = form.get("email");
+    //     const password = form.get("password");
+    //     const password1 = form.get("password");
+
+       
+
+    //     console.log({ firstname, lasttname, email, password, password1 });
+
+    //     createNewUser(email, password, password1)
+    //         .then((result) => {
+    //             const user = result.user;
+    //             setUser(user);
+    //             console.log(user);
+    //         })
+    //         .catch((error) => {
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             console.log(errorCode, errorMessage);
+    //         });
+    // }
+
     const handlesubmit = (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        //get form data
-        const form = new FormData(e.target);
-        const firstname = form.get("firstname");
-        const lasttname = form.get("lastname");
-        const email = form.get("email");
-        const password = form.get("password");
-        const password1 = form.get("password");
-        console.log({ firstname, lasttname, email, password, password1 });
+    const form = new FormData(e.target);
+    const firstname = form.get("firstname");
+    const lastname = form.get("lastname");
+    const email = form.get("email");
+    const password = form.get("password");
+    
+    // Combine first and last name
+    const displayName = `${firstname} ${lastname}`;
 
-        createNewUser(email, password, password1)
-            .then((result) => {
-                const user = result.user;
-                setUser(user);
+    createNewUser(email, password)
+        .then((result) => {
+            const user = result.user;
+            
+            // Update user profile with display name
+            return updateProfile(user, {
+                displayName: displayName
+            }).then(() => {
+                setUser({...user, displayName: displayName});
                 console.log(user);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
             });
-    }
+        })
+        .catch((error) => {
+            console.log(error.code, error.message);
+        });
+}
 
 
     return (
