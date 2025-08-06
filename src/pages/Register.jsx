@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
-import Loading from "./Loading";
+import {  FaGoogle } from "react-icons/fa";
 
 const Register = () => {
 
@@ -51,7 +51,7 @@ const Register = () => {
 
 
     return (
-        <div className="min-h-screen flex 
+        <div className="min-h-screen flex flex-col 
                 justify-center items-center">
             <div className="card bg-base-100 w-full max-w-sm shrink-0 rounded-none p-10 border border-gray-300">
 
@@ -128,6 +128,21 @@ const Register = () => {
                     Already have an account? <Link className="text-[#F9A51A]" to="/auth/login">Login</Link>
                 </p>
             </div>
+
+            <div className="my-6  px-6 py-2 flex items-center w-full max-w-sm justify-center">
+                <div className="flex-1 h-px bg-gray-300"></div>
+                <div className="px-4 text-gray-500">OR</div>
+                <div className="flex-1 h-px bg-gray-300"></div>
+            </div>
+
+            
+            <div className="w-full max-w-sm space-y-4">
+                <button className="btn w-full border  border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+                    <FaGoogle className="mr-2" /> Continue with Google
+                </button>
+               
+            </div>
+           
         </div>
     );
 };
