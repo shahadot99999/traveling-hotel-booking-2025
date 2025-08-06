@@ -8,7 +8,9 @@ const auth = getAuth(app);
 
 const AuthProvider = ({children}) => {
     const [user, setUser]= useState(null);
-     console.log(user);
+
+    const [loading, setLoading]= useState(true); 
+     console.log(user, loading);
 
     // const createNewUser=(email, password)=>{
     //     return createUserWithEmailAndPassword(auth,
@@ -16,6 +18,7 @@ const AuthProvider = ({children}) => {
     // };
 
     const createNewUser = (email, password, displayName) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Update the user's profile with their name
@@ -28,6 +31,7 @@ const AuthProvider = ({children}) => {
     };
 
     const userLogin =(email, password)=>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -35,6 +39,7 @@ const AuthProvider = ({children}) => {
 
 
     const logout =()=>{
+        setLoading(true);
         return signOut(auth);
     }
     const authInfo = {
@@ -43,6 +48,7 @@ const AuthProvider = ({children}) => {
         createNewUser,
         logout,
         userLogin,
+        loading,
     }
 
     // useEffect(()=>{
@@ -61,6 +67,7 @@ const AuthProvider = ({children}) => {
                 displayName: currentUser.displayName,
                 // other properties you need
             } : null);
+            setLoading(false);
         });
         return () => unSubscribe();
     }, []);

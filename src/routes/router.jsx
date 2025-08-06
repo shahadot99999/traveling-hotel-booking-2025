@@ -5,6 +5,7 @@ import HotelBookingLayout from "../layout/HotelBookingLayout";
 import AuthLayout from "../layout/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -21,7 +22,9 @@ const router = createBrowserRouter([
     {
 
         path:"/hotelbooking",
-        element:<HotelBookingLayout></HotelBookingLayout>
+        element:<PrivateRoute>
+            <HotelBookingLayout></HotelBookingLayout>
+        </PrivateRoute>
     },
     {
         path: "/auth",
