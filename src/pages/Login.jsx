@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 
@@ -7,6 +7,14 @@ const Login = () => {
 
     const { userLogin, setUser } = useContext(AuthContext);
 
+   const [error, setError]= useState({});
+
+  //location setting
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log(location);
+
+    //handler setttng
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -18,9 +26,11 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user);
+                navigate(location?.state ? location.state: "/");
             })
-            .catch((error) => {
-                alert(error.code);
+            .catch((err) => {
+                // alert(error.code);
+                setError({...error, login:err.code})
             });
     }
 
@@ -35,20 +45,32 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input 
-                        name="email"
-                        type="email"
-                         placeholder="email/username"
-                          className="input input-bordered" required />
+                        <input
+                            name="email"
+                            type="email"
+                            placeholder="email/username"
+                            className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input 
-                        name="password"
-                        type="password" placeholder="password" className="input input-bordered" required />
-                        <label className="label">
+                        <input
+                            name="password"
+                            type="password"
+                            placeholder="password"
+                            className="input input-bordered"
+                            required
+                        />
+
+                        {/* Error message container - now above Forgot password */}
+                        <div className="min-h-[24px]"> {/* This ensures consistent space */}
+                            {error.login && (
+                                <p className="text-sm text-red-600 mt-1 mb-1">{error.login}</p>
+                            )}
+                        </div>
+
+                        <label className="label pt-0"> {/* pt-0 reduces top padding */}
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
                     </div>
