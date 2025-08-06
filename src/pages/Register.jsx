@@ -1,51 +1,36 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import Loading from "./Loading";
 
 const Register = () => {
 
     const { createNewUser, setUser } = useContext(AuthContext);
 
-    // const handlesubmit = (e) => {
-    //     e.preventDefault();
-
-    //     //get form data
-    //     const form = new FormData(e.target);
-    //     const firstname = form.get("firstname");
-    //     const lasttname = form.get("lastname");
-    //     const email = form.get("email");
-    //     const password = form.get("password");
-    //     const password1 = form.get("password");
-
-       
-
-    //     console.log({ firstname, lasttname, email, password, password1 });
-
-    //     createNewUser(email, password, password1)
-    //         .then((result) => {
-    //             const user = result.user;
-    //             setUser(user);
-    //             console.log(user);
-    //         })
-    //         .catch((error) => {
-    //             const errorCode = error.code;
-    //             const errorMessage = error.message;
-    //             console.log(errorCode, errorMessage);
-    //         });
-    // }
-
+    const [error, setError]= useState('');
+   
     const handlesubmit = (e) => {
     e.preventDefault();
+    setError('');
 
     const form = new FormData(e.target);
     const firstname = form.get("firstname");
     const lastname = form.get("lastname");
     const email = form.get("email");
     const password = form.get("password");
+    const confirmPassword = form.get("confirmPassword"); // Changed from second password field
     
     // Combine first and last name
     const displayName = `${firstname} ${lastname}`;
+
+    // Check if passwords match
+        if (password !== confirmPassword) {
+            setError("Passwords don't match!");
+            return; // Stop the function if passwords don't match
+        }
+
+        
 
     createNewUser(email, password)
         .then((result) => {
@@ -117,14 +102,25 @@ const Register = () => {
                     <div className="form-control">
 
                         <input
-                            name="password"
+                            name="confirmPassword"
                             type="password" placeholder=" conform password" className="input input-bordered" required />
 
                     </div>
 
+                    {/* Error message display above button */}
+                    {error && (
+                        <p className="text-sm text-red-600 mt-1 mb-1 text-center">
+                            {error}
+                        </p>
+                    )}
 
-                    <div className="form-control mt-6">
-                        <button className=" w-64 bg-[#F9A51A] text-white py-2 px-6 rounded-none">Register</button>
+
+
+
+                    <div className="form-control mt-0">
+                        <button className="w-64 bg-[#F9A51A] text-white py-2 px-6 rounded-none">
+                            Register
+                        </button>
                     </div>
                 </form>
 
