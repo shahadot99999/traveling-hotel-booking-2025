@@ -1,12 +1,17 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { updateProfile } from "firebase/auth";
+import { signInWithPopup, getAuth, updateProfile } from "firebase/auth";
 import {  FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
+import app from "../firebase/firebase.config"
 
 const Register = () => {
 
     const { createNewUser, setUser } = useContext(AuthContext);
+
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth(app);
 
     const [error, setError]= useState('');
    
@@ -47,6 +52,16 @@ const Register = () => {
         .catch((error) => {
             console.log(error.code, error.message);
         });
+}
+
+const handleGoogleSignIn =()=>{
+   signInWithPopup(auth, provider)
+   .then((result)=>{
+    console.log(result);
+   })
+   .catch(error =>{
+    console.log(error);
+   })
 }
 
 
@@ -137,7 +152,7 @@ const Register = () => {
 
             
             <div className="w-full max-w-sm space-y-4">
-                <button className="btn w-full border  border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+                <button onClick={handleGoogleSignIn} className="btn w-full border  border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
                     <FaGoogle className="mr-2" /> Continue with Google
                 </button>
                
