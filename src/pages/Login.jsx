@@ -1,6 +1,10 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import app from "../firebase/firebase.config"
+import {  FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, getAuth } from "firebase/auth";
 
 
 const Login = () => {
@@ -8,6 +12,9 @@ const Login = () => {
     const { userLogin, setUser } = useContext(AuthContext);
 
    const [error, setError]= useState({});
+
+   const provider = new GoogleAuthProvider();
+   const auth = getAuth(app);
 
   //location setting
     const location = useLocation();
@@ -34,8 +41,18 @@ const Login = () => {
             });
     }
 
+    const handleGoogleSignIn =()=>{
+   signInWithPopup(auth, provider)
+   .then((result)=>{
+    console.log(result);
+   })
+   .catch(error =>{
+    console.log(error);
+   })
+}
+
     return (
-        <div className="min-h-screen flex 
+        <div className="min-h-screen flex flex-col
         justify-center items-center">
             <div className="card bg-base-100 w-full max-w-sm shrink-0 rounded-none p-10 border border-gray-300 ">
 
@@ -82,6 +99,12 @@ const Login = () => {
                 <p className="text-center font-semibold">
                     Don’t have an account? <Link className="text-[#F9A51A]" to="/auth/register">Create an account</Link>
                 </p>
+            </div>
+            <div className="w-full max-w-sm space-y-4">
+                <button onClick={handleGoogleSignIn} className="btn w-full border  border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+                    <FaGoogle className="mr-2" /> Continue with Google
+                </button>
+
             </div>
         </div>
     );
