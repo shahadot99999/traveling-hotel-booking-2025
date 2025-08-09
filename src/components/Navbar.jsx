@@ -7,6 +7,8 @@ import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
     const {user, logout}=useContext(AuthContext);
+
+    // console.log(import.meta.env.VITE_a);
     return (
          <div className="flex justify-between items-center p-4  shadow-sm">
             {/* Logo */}
