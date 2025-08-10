@@ -19,7 +19,7 @@ const Login = () => {
   //location setting
     const location = useLocation();
     const navigate = useNavigate();
-    console.log(location);
+    // console.log(location);
 
     //handler setttng
     const handleSubmit = (e) => {
@@ -27,7 +27,7 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({ email, password });
+        // console.log({ email, password });
 
         userLogin(email, password)
             .then(result => {
@@ -44,10 +44,10 @@ const Login = () => {
     const handleGoogleSignIn =()=>{
    signInWithPopup(auth, provider)
    .then((result)=>{
-    console.log(result);
+    // console.log(result);
    })
    .catch(error =>{
-    console.log(error);
+    // console.log(error);
    })
 }
 

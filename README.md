@@ -2,7 +2,7 @@
 
 Travel Geru is a modern hotel booking application built with React that allows users to search and book hotels. The application features a clean interface with essential booking functionality and user authentication.
 
-live link:
+live link:https://traveling-hotel-booking-2025.web.app
 
 Features
 Core Functionality

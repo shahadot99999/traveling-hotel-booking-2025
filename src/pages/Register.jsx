@@ -46,21 +46,21 @@ const Register = () => {
                 displayName: displayName
             }).then(() => {
                 setUser({...user, displayName: displayName});
-                console.log(user);
+                // console.log(user);
             });
         })
         .catch((error) => {
-            console.log(error.code, error.message);
+           // console.log(error.code, error.message);
         });
 }
 
 const handleGoogleSignIn =()=>{
    signInWithPopup(auth, provider)
    .then((result)=>{
-    console.log(result);
+    // console.log(result);
    })
    .catch(error =>{
-    console.log(error);
+    // console.log(error);
    })
 }
 
